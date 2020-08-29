@@ -1,8 +1,0 @@
-let
-	integer n.
-in
-	read n;
-	while x < 5
-	do
-	write x;
-end
