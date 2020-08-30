@@ -1,14 +1,23 @@
 %{
 #include <string.h> /* for strdub */
 #include <stdlib.h> /* for atoi */
-#include "tuto.tab.h" /*for tokens defintion and yylval */ 
+#include "tuto.tab.h" /*for tokens defined in bison file, and yylval */ 
 %}
 /* ===== tokens defintion ====  */
 DIGIT	[0-9]	
 ID	[a-z][a-z0-9]*	
 
-/* DIGIT = regex matches with a single digit
-   ID    = regex matches with one letter and or followed by other letter or number 
+/*
+ felx -> bison
+	- bison expect to call yylex() to get the next token, and taking any associated value in the global yylval
+ DIGIT = regex matches with a single digit
+ ID    = regex matches with one letter and or followed by other letter or number 
+
+ * = 1 or more 
+ + = zero or more 
+
+float implementation.
+ {digit}+"."{digit}*
 */
 
 

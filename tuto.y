@@ -51,7 +51,7 @@ else gen_code(operation, identifier->offset);
 %token <intval> NUMBER /* simple integer */
 %token <id> IDENTIFIER /* Simple identifier */ 
 %token <lbls> IF WHILE	/* For backPatching lables */
-%token <lbls> SKIP THEN ELSE FI DO END
+%token SKIP THEN ELSE FI DO END
 %token INTEGER READ WRITE LET IN 	
 %token ASSGNOP
 /* OPERATOR PRECEDENCE */

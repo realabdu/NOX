@@ -141,10 +141,7 @@ else gen_code(operation, identifier->offset);
 # define YYERROR_VERBOSE 0
 #endif
 
-/* Use api.header.include to #include this header
-   instead of duplicating it here.  */
-#ifndef YY_YY_TUTO_TAB_H_INCLUDED
-# define YY_YY_TUTO_TAB_H_INCLUDED
+
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -188,7 +185,7 @@ union semrec
 	char *id; /* identifiers */
 	struct lbs *lbls; /* for backpatching */
 
-#line 192 "tuto.tab.c"
+#line 189 "tuto.tab.c"
 
 };
 #line 45 "tuto.y"
@@ -202,7 +199,7 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_TUTO_TAB_H_INCLUDED  */
+
 
 
 
@@ -1409,149 +1406,149 @@ yyreduce:
   case 2:
 #line 65 "tuto.y"
                         {gen_code(DATA,data_location() - 1);}
-#line 1413 "tuto.tab.c"
+#line 1410 "tuto.tab.c"
     break;
 
   case 3:
 #line 67 "tuto.y"
              {gen_code(HALT,0);YYACCEPT;}
-#line 1419 "tuto.tab.c"
+#line 1416 "tuto.tab.c"
     break;
 
   case 5:
 #line 70 "tuto.y"
                                        {install((yyvsp[-1].id));}
-#line 1425 "tuto.tab.c"
+#line 1422 "tuto.tab.c"
     break;
 
   case 7:
 #line 73 "tuto.y"
                                {install((yyvsp[-1].id));}
-#line 1431 "tuto.tab.c"
+#line 1428 "tuto.tab.c"
     break;
 
   case 11:
 #line 79 "tuto.y"
                                          {context_check(READ_INT,(yyvsp[0].id));}
-#line 1437 "tuto.tab.c"
+#line 1434 "tuto.tab.c"
     break;
 
   case 12:
 #line 80 "tuto.y"
                                  {gen_code(WRITE_INT, 0);}
-#line 1443 "tuto.tab.c"
+#line 1440 "tuto.tab.c"
     break;
 
   case 13:
 #line 81 "tuto.y"
                                  {context_check(STORE, (yyvsp[-2].id));}
-#line 1449 "tuto.tab.c"
+#line 1446 "tuto.tab.c"
     break;
 
   case 14:
 #line 83 "tuto.y"
                         {(yyvsp[-1].lbls) = (struct lbs *) newlblrec();  (yyvsp[-1].lbls)->for_jmp_false = reserve_loc();}
-#line 1455 "tuto.tab.c"
+#line 1452 "tuto.tab.c"
     break;
 
   case 15:
 #line 84 "tuto.y"
                         { (yyvsp[-1].lbls)->for_goto = reserve_loc();}
-#line 1461 "tuto.tab.c"
+#line 1458 "tuto.tab.c"
     break;
 
   case 16:
 #line 85 "tuto.y"
                         {back_patch( (yyvsp[-3].lbls)->for_jmp_false,JMP_FALSE,gen_label());	}
-#line 1467 "tuto.tab.c"
+#line 1464 "tuto.tab.c"
     break;
 
   case 17:
 #line 87 "tuto.y"
                         {back_patch((yyvsp[-6].lbls)->for_goto, GOTO, gen_label());}
-#line 1473 "tuto.tab.c"
+#line 1470 "tuto.tab.c"
     break;
 
   case 18:
 #line 89 "tuto.y"
                         {(yyvsp[0].lbls) = (struct lbs *) newlblrec();  (yyvsp[0].lbls)->for_goto = gen_label();	}
-#line 1479 "tuto.tab.c"
+#line 1476 "tuto.tab.c"
     break;
 
   case 19:
 #line 90 "tuto.y"
                         {(yyvsp[-2].lbls)->for_jmp_false = reserve_loc();}
-#line 1485 "tuto.tab.c"
+#line 1482 "tuto.tab.c"
     break;
 
   case 20:
 #line 93 "tuto.y"
                         {gen_code(GOTO, (yyvsp[-6].lbls)->for_goto); back_patch((yyvsp[-6].lbls)->for_jmp_false,JMP_FALSE,gen_label());}
-#line 1491 "tuto.tab.c"
+#line 1488 "tuto.tab.c"
     break;
 
   case 21:
 #line 95 "tuto.y"
                 {gen_code(LD_INT, (yyvsp[0].intval));}
-#line 1497 "tuto.tab.c"
+#line 1494 "tuto.tab.c"
     break;
 
   case 22:
 #line 96 "tuto.y"
                     {context_check(LD_VAR , (yyvsp[0].id));}
-#line 1503 "tuto.tab.c"
+#line 1500 "tuto.tab.c"
     break;
 
   case 23:
 #line 97 "tuto.y"
                      {gen_code(LT, 0);}
-#line 1509 "tuto.tab.c"
+#line 1506 "tuto.tab.c"
     break;
 
   case 24:
 #line 98 "tuto.y"
                      {gen_code(EQ, 0);}
-#line 1515 "tuto.tab.c"
+#line 1512 "tuto.tab.c"
     break;
 
   case 25:
 #line 99 "tuto.y"
                      {gen_code(GT, 0);}
-#line 1521 "tuto.tab.c"
+#line 1518 "tuto.tab.c"
     break;
 
   case 26:
 #line 100 "tuto.y"
                      {gen_code(ADD, 0);}
-#line 1527 "tuto.tab.c"
+#line 1524 "tuto.tab.c"
     break;
 
   case 27:
 #line 101 "tuto.y"
                      {gen_code(SUB, 0);}
-#line 1533 "tuto.tab.c"
+#line 1530 "tuto.tab.c"
     break;
 
   case 28:
 #line 102 "tuto.y"
                      {gen_code(MULT,0);}
-#line 1539 "tuto.tab.c"
+#line 1536 "tuto.tab.c"
     break;
 
   case 29:
 #line 103 "tuto.y"
                      {gen_code(DIV, 0);}
-#line 1545 "tuto.tab.c"
+#line 1542 "tuto.tab.c"
     break;
 
   case 30:
 #line 104 "tuto.y"
                      {gen_code(PWR,0);}
-#line 1551 "tuto.tab.c"
+#line 1548 "tuto.tab.c"
     break;
 
 
-#line 1555 "tuto.tab.c"
+#line 1552 "tuto.tab.c"
 
       default: break;
     }
