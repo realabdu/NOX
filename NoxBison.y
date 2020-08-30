@@ -4,7 +4,7 @@
 #include <string.h> /*For stccmp in symbol */
 #include <stdio.h> /*for error messages */
 #include "ST.h" /* symbol table module */
-#include "SM.h" /* stack machine module */
+#include "NoxSM.h" /* stack machine module */
 #include "CG.h" /* code generation module */
 #define YYDEBUG 1 /* For debugging */
 
