@@ -1,6 +1,7 @@
 # NOX
-> programming language for linear optimization problems.
 ![nox logo](https://imgur.com/fbVBC0k.png)
+> programming language for linear optimization problems.
+
 
 nox is a programming language, intended to deal with linear optimization problems.
 for now, nox supports basic language features. and as nox grow we will implement features, specified for LP.
