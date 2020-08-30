@@ -1,5 +1,5 @@
 ------------------------------------
- NOX
+ NOX language
 -------------------------------------
 - nox is intended to be a lanugage for linear programming problems
 	- but why ?, im trying to learn math for fun, and im intersted in compilers,
