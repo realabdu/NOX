@@ -26,7 +26,7 @@ float implementation.
 {DIGIT}+	{yylval.intval = atoi(yytext);
 		 return(NUMBER);}
 do		{return(DO);}
-esle 		{return(ELSE);}
+else		{return(ELSE);}
 end		{return(END);}
 fi		{return(FI);}
 if		{return(IF);}

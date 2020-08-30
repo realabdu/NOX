@@ -18,7 +18,7 @@ struct lbs{	/* Labels for data, if and while */
 struct lbs * newlblrec() /* Allocate space for the labels */
 {
 return (struct lbs *) malloc(sizeof(struct lbs));
-}
+};
 /* install identifier& check of previously defined */
 install (char *sym_name){
 symrec *s;
@@ -47,10 +47,11 @@ else gen_code(operation, identifier->offset);
 	char *id; /* identifiers */
 	struct lbs *lbls; /* for backpatching */
 }
+/* token types */
 %start program 
-%token <intval> NUMBER /* simple integer */
-%token <id> IDENTIFIER /* Simple identifier */ 
-%token <lbls> IF WHILE	/* For backPatching lables */
+%token <intval> NUMBER /* simple integer token, with semnatic value of type intval*/
+%token <id> IDENTIFIER /* Simple identifier token, with semantic value of type id */ 
+%token <lbls> IF WHILE	/* For backPatching lablels token, with semantic value of lbls*/
 %token SKIP THEN ELSE FI DO END
 %token INTEGER READ WRITE LET IN 	
 %token ASSGNOP
@@ -80,17 +81,20 @@ command: SKIP
 	|WRITE exp		 {gen_code(WRITE_INT, 0);}
 	|IDENTIFIER ASSGNOP exp	 {context_check(STORE, $1);}
 
-	|IF exp		{$1 = (struct lbs *) newlblrec();  $1->for_jmp_false = reserve_loc();}
-	|THEN commands  { $1->for_goto = reserve_loc();}
+	|IF exp		{$1 = (struct lbs *) newlblrec();
+			 $1->for_jmp_false = reserve_loc();}
+	THEN commands  { $1->for_goto = reserve_loc();}
 	ELSE		{back_patch( $1->for_jmp_false,JMP_FALSE,gen_label());	}
 		commands
 	FI		{back_patch($1->for_goto, GOTO, gen_label());}
 
-	|WHILE		{$1 = (struct lbs *) newlblrec();  $1->for_goto = gen_label();	}
+	|WHILE		{$1 = (struct lbs *) newlblrec();
+			 $1->for_goto = gen_label();	}
 		exp 	{$1->for_jmp_false = reserve_loc();} 
 	DO
 		commands
-	END		{gen_code(GOTO, $1->for_goto); back_patch($1->for_jmp_false,JMP_FALSE,gen_label());}
+	END		{gen_code(GOTO, $1->for_goto);
+			 back_patch($1->for_jmp_false,JMP_FALSE,gen_label());}
 	;
 exp: NUMBER	{gen_code(LD_INT, $1);} 
 	|IDENTIFIER {context_check(LD_VAR , $1);}

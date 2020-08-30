@@ -1,0 +1,12 @@
+this is temporary build commands.
+TODO: use CMAKE and bash to create a build script 
+
+bison -dv tuto.y // d to generate header file to be   used in lex and v for the output file
+gcc -c tuto.tab.c // assemble but dont link (?)
+
+flex tuto.l //use the tool flex Ez Clap 
+gcc -c lex.yy.c //assemble but dont link (?)
+
+gcc -o tuto_OBJ lex.yy.o tuto.tab.o -lm
+
+./tuto_OBK // to use 
