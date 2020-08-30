@@ -3,12 +3,16 @@
 
 /* operation codes */
 // 17 ops
-enum op_code = {ADD,SUB,MULT,DIV,PWR,EQ,LT,GT,LD_INT,LD_VAR,STORE,DATA,GOTO,JMP_FALSE
+enum code_ops {ADD,SUB,MULT,DIV,PWR,EQ,LT,GT,LD_INT,LD_VAR,STORE,DATA,GOTO,JMP_FALSE
 		,READ_INT,WRITE_INT,HALT};
 
+/* external representaion of stackmachine operations ?*/
+char *op_name[] = {"halt", "store", "jmp_FAlSE", "goto","data", 
+		"ld_int", "ld_var","read_int","write_int",
+		"lt","eq","gt","add","sub","mult","div","pwr"};
 /* instruction structure */
 struct instruction{
-	enum op_code op;
+	enum code_ops op;
 	int arg;
 };
 
@@ -23,7 +27,7 @@ struct instruction code[999];
 int stack[999];
 
 /* fetch and execute ops, aka interpreter */
-void execution_fetch_cycle(){
+void fetch_execute_cycle(){
 	do{
 		ir = code[pc++]; 
 		switch(ir.op){
@@ -48,7 +52,7 @@ void execution_fetch_cycle(){
 				}else{
 					stack[--top] = 0;
 				} break;
-		case LT		:if(stack[top-1] <  stack[top]{
+		case LT		:if(stack[top-1] <  stack[top]){
 					stack[--top] = 1;
 				}else{
 					stack[--top] = 0;

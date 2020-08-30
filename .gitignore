@@ -1,0 +1,7 @@
+#object file
+*.o
+*.tab.h
+*.tab.c
+*.yy.c
+*.output
+*
