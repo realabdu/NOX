@@ -3,9 +3,9 @@
 #include <stdlib.h> /* For mallon in symbol table */
 #include <string.h> /*For stccmp in symbol */
 #include <stdio.h> /*for error messages */
-#include "ST.h" /* symbol table module */
+#include "NoxST.h" /* symbol table module */
 #include "NoxSM.h" /* stack machine module */
-#include "CG.h" /* code generation module */
+#include "NoxCG.h" /* code generation module */
 #define YYDEBUG 1 /* For debugging */
 
 int errors;	/*error count */

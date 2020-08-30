@@ -1,7 +1,7 @@
 %{
 #include <string.h> /* for strdub */
 #include <stdlib.h> /* for atoi */
-#include "tuto.tab.h" /*for tokens defined in bison file, and yylval */ 
+#include "NoxBison.tab.h" /*for tokens defined in bison file, and yylval */ 
 %}
 /* ===== tokens defintion ====  */
 DIGIT	[0-9]	
