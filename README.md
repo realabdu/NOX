@@ -95,8 +95,7 @@ end
 ```
 
 ## How NOX works ? 
-
-
+![nox_info](https://imgur.com/2JpwtLR.png)
 ## Release History
 
 * 0.2.1
@@ -131,5 +130,6 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 
 ## TODO list 
 
-✅Add basic language features ( vars, while, if, else  etc.) 
+✅Add basic language features ( vars, while, if, else  etc.)
+
 ⬜Add LP solver glpk into compiling pipeline
