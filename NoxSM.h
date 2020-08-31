@@ -70,8 +70,8 @@ void fetch_execute_cycle(){
 					pc = ir.arg;
 				} break;
 		case STORE	:stack[ir.arg] = stack[top--]; break;
-		case WRITE_INT	:printf("Output : %d \n", stack[top--]); break;
-		case READ_INT	:printf("Input : ");
+		case WRITE_INT	:printf("%d \n", stack[top--]); break;
+		case READ_INT	:printf("input:>> ");
 				 scanf("%d", &stack[ar+ir.arg]); break;
 		default		:printf(" Internal Error: Memory Dump\n");
 				break;
