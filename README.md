@@ -1,14 +1,14 @@
 # NOX
 ![nox logo](https://imgur.com/fbVBC0k.png)
-> programming language for linear optimization problems.
-
-
-nox is a programming language, intended to deal with linear optimization problems.
-for now, nox supports basic language features. and as nox grow we will implement features, specified for LP.
+> programming language written in C .
 
 
 
+lately i have become intersted in  the history of computing and it's relation to mathmatics so i decided to learn both. by creating Nox.
+nox is a programming language written in C, using tools like bison&flex, and has it's own Virtual stack machine.
+the end goal of NOX is to support linear optimization problems.
 
+*(😅im learning as i go, so if there is any misinformation please contact me/pull request, thanks!)*
 ## Build Nox
 
 #### Linux:
@@ -27,13 +27,74 @@ $ flex NoxLex.l
 $ gcc -c lex.yy.c
 $ gcc -o nox lex.yy.o NoxBison.tab.o -lm
 ```
+## NOX syntax
 
-## Usage example
+NOX program consists of 2 segments.
 
-lets try to wite Fibonacci Series in NOX
+declarations : where you declare your variables.
+commands     : where you write commands like if, while etc.
+```c
+let
+    declarations
+in
+    commands
+end
+```
+note: in the delarations section you don't need ' ; ' but you do need ' . ' after each line.
 
-or more examples and usage, please refer to the [Wiki][wiki]._
 
+### commands & keywords.
+|keywords| usage|
+|--|--|
+|read | read x;| 
+|write |write x;  |
+|integer |integer x,n. |
+|while ,do , end|  while x > 1 do skip; end; |
+|if,then,fi | if x > 1 then x := 4; fi;
+|if,then,else,fi| if x > 1 then x:=4; else x := 111;fi;|
+|skip| skips commands after if,else and while|
+
+### operators.
+|operators| name | usage|
+|--|--|--|
+|:= | assignment  | x := 1;|
+|> | greater than| x > 1| 
+|< | less than  | x < 1|
+|= | test equality | x = 1 |
+|+|  summation | x + 5;
+|- | Subtraction | x  - 5;|
+| * | Multiplication| x * 5;|
+| / | Division|  x / 2;
+| ^ | power| --- |
+
+### complete example
+
+Fibonacci Series in NOX
+
+```c
+let
+	integer i,n1,n2,n3,numbers.
+in
+	read numbers;
+	i := 2;
+	n1 := 0;
+	n2 := 1;
+	write n1;
+	write n2;
+
+	 while i < numbers
+		do
+			 n3 := n1 + n2; 
+               	         write n3; 
+               	         n1 := n2; 
+               	         n2 := n3; 
+			 i := i +1;
+		end;
+	
+end
+```
+
+## How NOX works ? 
 
 
 ## Release History
@@ -42,14 +103,14 @@ or more examples and usage, please refer to the [Wiki][wiki]._
     * CHANGE: Update docs (module code remains unchanged)
 * 0.2.0
     * Work in progress
-    * ----
+    * 
 * 0.1.1
-    * -------
+    * 
 * 0.1.0
-    * ------
-    * ------
+    * 
+    * 
 * 0.0.1
-    * Work in progress
+    * 
 
 ## Meta
 
@@ -70,10 +131,5 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 
 ## TODO list 
 
-✅Add baisic language features ( vars, while, if, else  etc.) 
+✅Add basic language features ( vars, while, if, else  etc.) 
 ⬜Add LP solver glpk into compiling pipeline
-
-
-
-
-
