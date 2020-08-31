@@ -27,6 +27,18 @@ $ flex NoxLex.l
 $ gcc -c lex.yy.c
 $ gcc -o nox lex.yy.o NoxBison.tab.o -lm
 ```
+
+Now you can run NOX interpreter and start coding 
+
+```c
+./nox
+```
+
+Or pass in .nox file to the compiler
+```c
+./nox file_name.nox
+```
+ 
 ## NOX syntax
 
 NOX program consists of 2 segments.
