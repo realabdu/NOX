@@ -1,37 +1,147 @@
-## Welcome to GitHub Pages
+# NOX
+![nox logo](https://imgur.com/fbVBC0k.png)
+> programming language written in C .
 
-You can use the [editor on GitHub](https://github.com/abdullahMosibah/NOX/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+lately i have become intersted in  the history of computing and it's relation to mathmatics so i decided to learn both. by creating Nox.
+nox is a programming language written in C, using tools like bison&flex, and has it's own Virtual stack machine.
+the end goal of NOX is to support linear optimization problems.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+*(😅im learning as i go, so if there is any misinformation please contact me/pull request, thanks!)*
+## Build Nox
 
-```markdown
-Syntax highlighted code block
+#### Linux:
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+ ### install [bison](https://www.gnu.org/software/bison/) & [flex](https://github.com/westes/flex/) & [gcc](https://gcc.gnu.org/) .( you probaly have them installed 😉)
+```sh
+$ sudo apt-get install bison flex gcc
+```
+### clone this repository & build
+```sh
+$ git clone https://github.com/abdullahMosibah/NOX.git
+$ cd NOX
+$ bison -dv NoxBison.y
+$ gcc -c NoxBison.tab.c
+$ flex NoxLex.l
+$ gcc -c lex.yy.c
+$ gcc -o nox lex.yy.o NoxBison.tab.o -lm
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Now you can run NOX interpreter and start coding 
 
-### Jekyll Themes
+```c
+./nox
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/abdullahMosibah/NOX/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Or pass in .nox file to the compiler
+```c
+./nox file_name.nox
+```
+ 
+## NOX syntax
 
-### Support or Contact
+NOX program consists of 2 segments.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+declarations : where you declare your variables.
+commands     : where you write commands like if, while etc.
+```c
+let
+    declarations
+in
+    commands
+end
+```
+note: in the delarations section you don't need ' ; ' but you do need ' . ' after each line.
+
+
+### commands & keywords.
+|keywords| usage|
+|--|--|
+|read | read x;| 
+|write |write x;  |
+|integer |integer x,n. |
+|while ,do , end|  while x > 1 do skip; end; |
+|if,then,fi | if x > 1 then x := 4; fi;
+|if,then,else,fi| if x > 1 then x:=4; else x := 111;fi;|
+|skip| skips commands after if,else and while|
+
+### operators.
+|operators| name | usage|
+|--|--|--|
+|:= | assignment  | x := 1;|
+|> | greater than| x > 1| 
+|< | less than  | x < 1|
+|= | test equality | x = 1 |
+|+|  summation | x + 5;
+|- | Subtraction | x  - 5;|
+| * | Multiplication| x * 5;|
+| / | Division|  x / 2;
+| ^ | power| --- |
+
+### complete example
+
+Fibonacci Series in NOX
+
+```c
+let
+	integer i,n1,n2,n3,numbers.
+in
+	read numbers;
+	i := 2;
+	n1 := 0;
+	n2 := 1;
+	write n1;
+	write n2;
+
+	 while i < numbers
+		do
+			 n3 := n1 + n2; 
+               	         write n3; 
+               	         n1 := n2; 
+               	         n2 := n3; 
+			 i := i +1;
+		end;
+	
+end
+```
+
+## How NOX works ? 
+![nox_info](https://imgur.com/2JpwtLR.png)
+## Release History
+
+* 0.2.1
+    * CHANGE: Update docs (module code remains unchanged)
+* 0.2.0
+    * Work in progress
+    * 
+* 0.1.1
+    * 
+* 0.1.0
+    * 
+    * 
+* 0.0.1
+    * 
+
+## Meta
+
+Abdullah Mosibah – [@abdullah_mrajab](https://twitter.com/abdullah_mrajab) – abdullah.rm.2020@gmail.com
+
+Distributed under the MIT license. See ``LICENSE`` for more information.
+
+
+
+## Contributing
+
+1. Fork it (<https://github.com/abdullahMosibah/NOX/fork>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
+
+
+## TODO list 
+
+✅Add basic language features ( vars, while, if, else  etc.)
+
+⬜Add LP solver glpk into compiling pipeline
