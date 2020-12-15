@@ -122,6 +122,11 @@ end
     * 
 * 0.0.1
     * 
+## TODO
+
+* read & implement the dragon book.
+* then determine the purpose of NOX, try to improve the current technology.
+* implement our own lexical/synthetic  analyzers.
 
 ## Meta
 
